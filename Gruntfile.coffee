@@ -1229,11 +1229,11 @@ module.exports = (grunt) ->
     'jasmine_chromeapp:socksEcho'
   ]
 
-  grunt.registerTask 'unit_test_nobuild', _.flatten(
+  grunt.registerTask 'unit_test_nobuild', _.flatten([
     Rule.buildAndRunTest(spec, grunt) for spec in Rule.getTests('src', 'lib', ['build-tools', 'integration-tests']),
     Rule.buildAndRunTest(spec, grunt) for spec in Rule.getTests('src', 'generic_core'),
     Rule.buildAndRunTest(spec, grunt) for spec in Rule.getTests('src', 'generic_ui/scripts')
-  )
+  ])
 
   grunt.registerTask 'unit_test', [
     'base'
